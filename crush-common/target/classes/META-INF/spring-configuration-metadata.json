@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "crush",
+      "type": "com.mhere.common.http.HttpClientProperties",
+      "sourceType": "com.mhere.common.http.HttpClientProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
