@@ -15,6 +15,7 @@
       <module>crush-user</module>
       <module>crush-gateway</module>
       <module>crush-core</module>
+      <module>crush-object-db</module>
     </modules>
 
   <name>Maven</name>
