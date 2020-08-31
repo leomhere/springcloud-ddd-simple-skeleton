@@ -11,13 +11,10 @@ spring:
       config:
         server-addr: 47.99.194.51:8848
         file-extension: yml
+        shared-dataids: crush-common.yml
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-
-crush:
-  gate-way:
-    server-address: http://localhost:9527
