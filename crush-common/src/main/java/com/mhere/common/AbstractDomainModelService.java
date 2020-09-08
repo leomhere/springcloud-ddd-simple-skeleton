@@ -7,7 +7,7 @@ public class AbstractDomainModelService {
 
     @PostConstruct
     public void init() {
-        DomainModelFactoryContextHolder.registerDomainModelService(this);
+        MultiDomainModelServiceFactory.registerDomainModelService(this);
     }
 
     abstract protected String type();

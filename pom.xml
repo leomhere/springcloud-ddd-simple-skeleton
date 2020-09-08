@@ -20,8 +20,8 @@
 
   <name>Maven</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://maven.apache.org/</url>
-  <inceptionYear>2001</inceptionYear>
+  <url>http://www.henjiwuxian.com/</url>
+  <inceptionYear>2020</inceptionYear>
 
   <distributionManagement>
     <site>

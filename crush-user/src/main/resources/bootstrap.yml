@@ -18,3 +18,8 @@ management:
     web:
       exposure:
         include: '*'
+
+logging:
+  config: log4j2.xml
+  level:
+    com.mhere.user.*: debug

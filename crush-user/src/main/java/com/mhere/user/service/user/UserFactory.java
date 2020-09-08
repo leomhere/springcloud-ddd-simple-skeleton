@@ -1,7 +1,7 @@
 package com.mhere.user.service.user;
 
 import com.mhere.common.AbstractDomainModelService;
-import com.mhere.common.DomainModelFactoryContextHolder;
+import com.mhere.common.MultiDomainModelServiceFactory;
 import com.mhere.common.transfer.UserTransfer;
 import com.mhere.user.service.user.entity.UserEntity;
 import com.mhere.user.service.user.entity.UserInfoEntity;
@@ -11,7 +11,7 @@ public class UserFactory {
     private static final String SERVICE_KEY = "USER";
 
     private static UserService getService() {
-        AbstractDomainModelService abstractDomainModelService = DomainModelFactoryContextHolder.getDomainModelService(SERVICE_KEY);
+        AbstractDomainModelService abstractDomainModelService = MultiDomainModelServiceFactory.getDomainModelService(SERVICE_KEY);
 
         assert abstractDomainModelService instanceof UserService;
         return (UserService) abstractDomainModelService;
