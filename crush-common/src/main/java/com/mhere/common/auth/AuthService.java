@@ -6,7 +6,7 @@ import com.mhere.common.transfer.UserTransfer;
 
 public class AuthService {
 
-    private static final String AUTH_SERVER_ADDRESS = "lb:/crush-auth/";
+    private static final String AUTH_SERVER_ADDRESS = "lb:/crush-auth";
 
     public static TokenAuthResult authenticateByTokenString(String tokenString) {
 
