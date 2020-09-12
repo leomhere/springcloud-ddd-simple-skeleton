@@ -1,7 +1,8 @@
 package com.mhere.user.service.user.entity;
 
 
-import com.mhere.common.AbstractBasicEntity;
+
+import com.mhere.base.AbstractBasicEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,6 +1,6 @@
 package com.mhere.utils.http;
 
-import com.mhere.common.err.AppException;
+import com.mhere.base.error.AppException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

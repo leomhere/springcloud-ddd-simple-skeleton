@@ -1,8 +1,8 @@
 package com.mhere.user.service.user;
 
-import com.mhere.common.AbstractDomainModelService;
-import com.mhere.common.MultiDomainModelServiceFactory;
-import com.mhere.common.transfer.UserTransfer;
+import com.mhere.auth.UserTransfer;
+import com.mhere.base.AbstractDomainModelService;
+import com.mhere.base.MultiDomainModelServiceFactory;
 import com.mhere.user.service.user.entity.UserEntity;
 import com.mhere.user.service.user.entity.UserInfoEntity;
 

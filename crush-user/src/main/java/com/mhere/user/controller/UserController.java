@@ -1,7 +1,7 @@
 package com.mhere.user.controller;
 
 
-import com.mhere.common.transfer.UserTransfer;
+import com.mhere.auth.UserTransfer;
 import com.mhere.user.service.user.User;
 import com.mhere.user.service.user.UserFactory;
 import com.mhere.user.service.user.UserService;

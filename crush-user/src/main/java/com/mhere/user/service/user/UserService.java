@@ -1,7 +1,7 @@
 package com.mhere.user.service.user;
 
-import com.mhere.common.AbstractDomainModelService;
-import com.mhere.common.err.Errors;
+import com.mhere.base.AbstractDomainModelService;
+import com.mhere.base.error.Errors;
 import com.mhere.user.service.user.entity.UserEntity;
 import com.mhere.user.service.user.entity.UserInfoEntity;
 import com.mhere.user.service.user.entity.UserInfoRepository;

@@ -1,9 +1,5 @@
 package com.mhere.auth;
 
-
-import com.mhere.common.transfer.TokenTransfer;
-import com.mhere.common.transfer.UserTransfer;
-
 public class TokenAuthResult {
     public UserTransfer user;
     public TokenTransfer token;

@@ -1,8 +1,8 @@
 package com.mhere.auth;
 
-import com.mhere.common.http.HttpClient;
-import com.mhere.common.http.ResponseSpec;
-import com.mhere.common.transfer.UserTransfer;
+
+import com.mhere.utils.http.HttpClient;
+import com.mhere.utils.http.ResponseSpec;
 
 public class AuthService {
 

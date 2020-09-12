@@ -1,6 +1,6 @@
 package com.mhere.base.config;
 
-import com.mhere.common.err.GlobalExceptionHandler;
+import com.mhere.base.error.GlobalExceptionHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

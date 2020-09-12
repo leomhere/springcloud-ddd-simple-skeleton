@@ -1,6 +1,6 @@
 package com.mhere.utils.http;
 
-import com.mhere.common.err.AppException;
+import com.mhere.base.error.AppException;
 import com.sun.net.httpserver.Headers;
 import org.reactivestreams.Publisher;
 import org.springframework.core.ParameterizedTypeReference;

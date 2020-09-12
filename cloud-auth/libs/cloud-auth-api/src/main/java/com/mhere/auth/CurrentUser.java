@@ -1,7 +1,7 @@
 package com.mhere.auth;
 
-import com.mhere.common.err.Errors;
-import com.mhere.common.transfer.UserTransfer;
+
+import com.mhere.base.error.Errors;
 
 import java.util.Optional;
 
