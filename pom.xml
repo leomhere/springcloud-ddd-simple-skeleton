@@ -16,6 +16,11 @@
       <module>crush-gateway</module>
       <module>crush-core</module>
       <module>crush-object-db</module>
+        <module>cloud-auth</module>
+      <module>cloud-utils</module>
+      <module>cloud-base</module>
+        <module>cloud-gateway</module>
+        <module>cloud-object-db</module>
     </modules>
 
   <name>Maven</name>

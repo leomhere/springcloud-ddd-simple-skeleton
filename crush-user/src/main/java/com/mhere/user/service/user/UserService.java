@@ -9,7 +9,6 @@ import com.mhere.user.service.user.entity.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 
 import java.util.Objects;
 import java.util.UUID;
