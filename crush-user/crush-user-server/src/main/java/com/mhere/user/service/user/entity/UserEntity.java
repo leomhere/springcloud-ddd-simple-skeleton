@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "com/mhere/user")
 public class UserEntity extends AbstractBasicEntity {
 
     @Id

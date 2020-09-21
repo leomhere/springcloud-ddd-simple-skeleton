@@ -12,7 +12,8 @@
     <artifactId>cloud-auth</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>libs/cloud-auth-api</module>
+        <module>cloud-auth-api</module>
+        <module>cloud-auth-server</module>
     </modules>
 
     <dependencies>

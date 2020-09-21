@@ -21,52 +21,45 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-abstract public class AbstractRequestBuilder<T extends RequestSpec.RequestBodyUriSpec> implements RequestSpec.RequestBodyUriSpec {
+abstract
+public class AbstractRequestBuilder<T extends AbstractRequestBuilder<T>> implements RequestSpec.RequestSpecGatherer {
 
     private final UriBuilderFactory uriBuilderFactory;
-
     protected AbstractRequestBuilder(UriBuilderFactory uriBuilderFactory) {
         this.uriBuilderFactory = uriBuilderFactory;
     }
 
-    @Nullable
     private URI uri = null;
-    @Nullable
     private HttpHeaders headers = null;
-    @Nullable
     private MultiValueMap<String, String> cookies = null;
-    @Nullable
     private Object body = null;
 
     private boolean throwWhenException = true;
 
+    public abstract AbstractRequestBuilder<T> lb();
+
     protected URI getUri() {
-        return uri != null
-                ? uri
-                : uriBuilderFactory.expand("");
+        return Optional.ofNullable(uri)
+                .orElse(uriBuilderFactory.expand(""));
     }
 
     protected HttpHeaders getHeaders() {
-        if (headers == null){
-            headers = new HttpHeaders();
-        }
-        return headers;
+        return Optional.ofNullable(headers)
+                .orElse(new HttpHeaders());
     }
-
     protected MultiValueMap<String, String> getCookies() {
-        if (cookies == null){
-            cookies = new LinkedMultiValueMap<>(4);
-        }
-        return cookies;
+        return Optional.ofNullable(cookies)
+                .orElse(new LinkedMultiValueMap<>(4));
     }
 
     protected boolean isThrowWhenException(){
         return throwWhenException;
     }
-    
+
     @Nullable
     protected Object getBody() {
         return body;
@@ -80,9 +73,6 @@ abstract public class AbstractRequestBuilder<T extends RequestSpec.RequestBodyUr
 
     @Override
     public AbstractRequestBuilder<T> uri(String uriTemplate, Object... uriVariables) {
-        if (uriTemplate.contains("lb:")) {
-            uriTemplate = uriTemplate.replace("lb:", HttpClientProperties.GATEWAY_SERVER_ADDRESS);
-        }
         this.uri = uriBuilderFactory.expand(uriTemplate, uriVariables);
         return this;
     }
@@ -95,14 +85,13 @@ abstract public class AbstractRequestBuilder<T extends RequestSpec.RequestBodyUr
 
     @Override
     public AbstractRequestBuilder<T> uri(Function<UriBuilder, URI> uriFunction) {
-        AbstractRequestBuilder.this.uri(uriFunction.apply(uriBuilderFactory.builder()));
-        return this;
+        URI uri = uriFunction.apply(this.uriBuilderFactory.builder());
+        return this.uri(uri);
     }
 
-
     @Override
-    public AbstractRequestBuilder<T> header(String headerName, String... headerValues) {
-        for (String headerValue : headerValues) {
+    public AbstractRequestBuilder<T> header(String headerName, String...headerVariables) {
+        for (String headerValue : headerVariables) {
             getHeaders().add(headerName, headerValue);
         }
         return this;
@@ -219,4 +208,5 @@ abstract public class AbstractRequestBuilder<T extends RequestSpec.RequestBodyUr
         this.throwWhenException = false;
         return this;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.mhere.utils.http;
 
 import com.mhere.base.error.AppException;
+import com.mhere.utils.http.loadbalance.LoadBalanceConfigure;
 import com.sun.net.httpserver.Headers;
 import org.reactivestreams.Publisher;
 import org.springframework.core.ParameterizedTypeReference;
@@ -16,12 +17,18 @@ import java.net.URI;
 import java.util.List;
 
 public class RestTemplateRequestBuilder extends AbstractRequestBuilder<RestTemplateRequestBuilder>
-        implements RequestSpec.RequestBodyUriSpec {
+        implements RequestSpec.RequestSpecGatherer {
+    private RestTemplate restTemplate;
 
-    private final RestTemplate restTemplate;
-    protected RestTemplateRequestBuilder(RestTemplate restTemplate, UriBuilderFactory uriBuilderFactory) {
+    protected RestTemplateRequestBuilder(UriBuilderFactory uriBuilderFactory, RestTemplate restTemplate) {
         super(uriBuilderFactory);
         this.restTemplate = restTemplate;
+    }
+
+    @Override
+    public AbstractRequestBuilder<RestTemplateRequestBuilder> lb() {
+        this.restTemplate = LoadBalanceConfigure.LOAD_BALANCE_REST_TEMPLATE;
+        return this;
     }
 
     @Override
@@ -49,7 +56,7 @@ public class RestTemplateRequestBuilder extends AbstractRequestBuilder<RestTempl
             URI uri = getUri();
             RequestEntity<?> requestEntity = getRequestEntity(httpMethod, uri);
             ResponseEntity<R> result = getCustomizedRestTemplate(uri).exchange(requestEntity, responseType);
-            return new ResponseSpec.SuccessResponseSpec<>(result);
+            return new ResponseSpec.SuccessResponseOperationSpec<>(result);
         } catch (AppException e) {
             return handleException(e);
         }
@@ -61,7 +68,7 @@ public class RestTemplateRequestBuilder extends AbstractRequestBuilder<RestTempl
             URI uri = getUri();
             RequestEntity<?> requestEntity = getRequestEntity(httpMethod, uri);
             ResponseEntity<R> result = getCustomizedRestTemplate(uri).exchange(requestEntity, responseType);
-            return new ResponseSpec.SuccessResponseSpec<R>(result);
+            return new ResponseSpec.SuccessResponseOperationSpec<R>(result);
         } catch (AppException e) {
             return handleException(e);
         }
@@ -71,7 +78,7 @@ public class RestTemplateRequestBuilder extends AbstractRequestBuilder<RestTempl
         if (isThrowWhenException()) {
             throw e;
         }
-        return new ResponseSpec.ErrorResponseSpec<>(e);
+        return new ResponseSpec.ErrorResponseOperationSpec<>(e);
     }
 
     // Async handler
