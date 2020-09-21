@@ -1,3 +1,4 @@
 领域模型的生命周期；
-http封装及各微服务之间调用；
+各微服务提供api和server，供其他微服务引用；
+http封装restTemplate和webClient，ribbon为客户端提供lb；
 简单auth与currentUser context封装；
